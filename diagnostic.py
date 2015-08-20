@@ -8,20 +8,20 @@
 ###############################################################################
 # Write f01 that prints "Hello World!" and calls f02. (three lines)
 def f01():
-
+    print "Hello World!"
     f02()
 ###############################################################################
 # Write f02 that sets the variables x, y, and z equal to the words 
 # necessary to have the f03 print "i love python!" (five lines)
-
-
-
-
+def f02():
+    x = "i"
+    y = "love"
+    z = "python"
     f03(x,y,z)  # Last line in f2()
 ###############################################################################
 # Finish f03 (replace the ????). 
 def f03(*words):
-    truth = " ".???(words)  # This is broken.
+    truth = " ".join(words)  # This is broken.
     truth_emphasized = truth + "!"
     print truth_emphasized
     f04(truth)  # Last line in f03()
@@ -29,7 +29,7 @@ def f03(*words):
 # Write f04 that prints truth backwards (edit one line only)
 # Ex. f4("Littlest Bear") prints "raeB tselttiL"
 def f04(string):
-    
+    string = string[::-1]
     f05(string)  # Last line in f04()
 ###############################################################################
 # Write f05 that for each char in a word passed as a parameter, prints that 
@@ -41,11 +41,8 @@ def f04(string):
 #   Info
 #    Info
 def f05(word):
-
-
-
-
-
+    for letter in range(len(word)):
+        print " "*(letter) + word
     f06("South Hall", "Python Rocks!")  # Last line in f05()
 ###############################################################################
 # Write f06 that takes two strings:
@@ -59,14 +56,19 @@ def f05(word):
 # 'longer_string' is longer than 'short_string' by 1 chars
 # 'short_string' has only 92.31% the number of chars of longer_string
 def f06(string1, string2):
-
-
-
-
-
-
-
-
+    count = 0
+    if len(string1)>len(string2):
+        print string1 +" is longer than " + string2 + " by "+ str(len(string1) - len(string2)) + " chars"
+        for letter in string2:
+            if letter in string1:
+                count += 1
+        print string2 +" has only " + str((count*100.0)/float(len(string1))) + "% the number of chars of " + string1
+    else:
+        print string2 +" is longer than " + string1 + " by "+ str(len(string2) - len(string1)) + " chars"
+        for letter in string1:
+            if letter in string2:
+                count += 1
+        print string1 +" has only " + str((count*100.0)/float(len(string2))) + "% the number of chars of " + string2
     various_solutions()  # Last line in f06()
 ###############################################################################
 # Write f07, f08, f09, f10 to find the sum of all the multiples of 3 or 5 
@@ -97,29 +99,42 @@ def various_solutions():
     f12()
 ###############################################################################
 def f07():
-    
-
+    i = 1
+    sum = 0
+    while(i<=500):
+        if i%3==0 or i%5==0:
+            sum += i
+        i += 1
+    print sum
 
 
 ###############################################################################
 def f08():
-    
+    sum = 0
+    for i in range(501):
+        if i%3==0 or i%5==0:
+            sum += i
+    print sum
 
 
 
 ###############################################################################
 def f09():
-    
-
-
+    d = sum({i for i in range(501) if i%3==0 or i%5==0 })
+    return d
 
 
 
 ###############################################################################
 def f10():
-
-
-
+    return sum_number(500,0)
+def sum_number(n,total):
+    if n >= 0:
+        if n%3==0 or n%5==0:
+            total += n
+        sum_number(n-1,total)
+    else:
+        return total
 
 
 
@@ -130,7 +145,13 @@ def f10():
 # strings, integers if they started as floats, and as the value 0 if they
 # started as ints.
 def f11(args):
-    
+    for each in args:
+        if type(each) == type("strings"):
+            print float(each)
+        elif type(each) == type(101.1):
+            print int(each)
+        elif type(each) == type(2):
+            print 0
 
 
 
@@ -148,7 +169,7 @@ def f11(args):
 # Ex. printing
 #   [1.0, 1.3, 2.443]
 def f12():
-    
+    pass    
 
 
 
@@ -158,7 +179,7 @@ def f12():
 ###############################################################################
 # Fix the error in f13:
 def f13():
-    for each in "string"
+    for each in "string":
         print each
     f14()  # Last line in f13()
 ###############################################################################
@@ -166,7 +187,7 @@ def f13():
 # You must add an import statement. Please do so at the top of the file.
 # Ex. /Users/dsg/Desktop/python-boot-camp/HW11/diagnostic.py
 def f14():
-    
+    pass    
 
 
 
@@ -187,7 +208,7 @@ def f14():
 # [[], [], [], [], [], [], [], [], [0], []]
 # [[], [], [], [], [], [], [], [], [], [0]]
 def f15():
-
+    pass
 
 
 
@@ -200,7 +221,7 @@ def f15():
 # Ex.
 # [1,2,3] and [4,5,6] would produce [(1, 4), (2, 5), (3, 6)]
 def f16(list1, list2):
-    
+    pass    
 
 
 
@@ -212,7 +233,7 @@ def f16(list1, list2):
 # with the index of the word in that line and the word, sharing tuples.
 # Ex. [(0, 'To'), (1, 'be'), (2, 'or'), (3, 'not'), (4, 'to'), (5, 'be')]
 def f17():
-    
+    pass    
 
 
 
@@ -225,7 +246,7 @@ def f17():
 # Print the dictionary.
 # Call the dictionary in f19()
 def f18(list_):
-
+    pass
 
 
 
@@ -236,7 +257,7 @@ def f18(list_):
 # would be even), otherwise change the value to the ascii number for the last
 # char in the word. Print the new dictionary.
 def f19(d):
-    
+    pass    
 
 
 
@@ -246,7 +267,7 @@ def f19(d):
 # f21("Yes") = True, f21("NO") = False, 
 # f21("nope") = False, f21("nADA") = False
 def f21(word):
-    
+    pass    
 
 
 
@@ -264,7 +285,7 @@ def f21(word):
 # Ex. second print:
 # ['PYTHON!', ['Other1', 'Other_2']]
 def f22():
-    
+    pass    
 
 
 
@@ -286,7 +307,7 @@ def f22():
 # row3 = ["","",""]
 # Ex. of print: x, col2
 def f23(lists_):
-
+    pass
 
 
 
@@ -303,7 +324,8 @@ def f23(lists_):
 # Write main() that calls f01, then prints the The Zen of Python, by Tim Peters.
 # (three lines)
 def main():
-
+    f01()
+    
 
 
 
@@ -311,5 +333,6 @@ def main():
 
 
 # Write the boilerplate code. (two lines)
-
+if __name__ == "__main__":
+    main()
 
